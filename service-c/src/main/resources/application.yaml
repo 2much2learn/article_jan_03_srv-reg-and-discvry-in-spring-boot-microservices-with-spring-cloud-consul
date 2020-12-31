@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: service-c
+  profiles:
+    active: "dev"
+
+server:
+  port : 8080
+
+---
+
+spring:
+  profiles: dev
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+
+server:
+  port : 8083
+
+---
+
+spring:
+  profiles: prod
+  cloud:
+    consul:
+      discovery:
+        instanceId: "${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}"
+        prefer-ip-address: true
+        health-check-critical-timeout: "1m"

@@ -1,0 +1,5 @@
+rootProject.name = 'spring-multi-module-consul'
+
+include 'service-a'
+include 'service-b'
+include 'service-c'

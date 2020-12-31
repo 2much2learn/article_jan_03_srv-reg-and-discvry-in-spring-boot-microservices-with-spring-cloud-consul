@@ -1,0 +1,81 @@
+version: '3.9'
+
+# Define services
+services:
+
+  # Service A
+  consul-server:
+    image: consul
+    ports:
+      - 8500:8500
+    restart: always
+    environment:
+      - "CONSUL_BIND_INTERFACE=eth0"
+    networks:
+      - backend
+
+  # Service A
+  service-a:
+    image: narramadan/spring-multi-module-consul-service-a
+    restart: always
+    ports:
+      - 8080:8080
+    links:
+      - consul-server
+    environment:
+      - spring.profiles.active=prod
+      - spring.cloud.consul.host=consul-server
+    networks:
+      - backend
+
+  # Service B - 1
+  service-b-1:
+    image: narramadan/spring-multi-module-consul-service-b
+    restart: always
+    links:
+      - consul-server
+    environment:
+      - spring.profiles.active=prod
+      - spring.cloud.consul.host=consul-server
+    networks: 
+      - backend
+
+  # Service B - 2
+  service-b-2:
+    image: narramadan/spring-multi-module-consul-service-b
+    restart: always
+    links:
+      - consul-server
+    environment:
+      - spring.profiles.active=prod
+      - spring.cloud.consul.host=consul-server
+    networks: 
+      - backend
+
+  # Service C - 1
+  service-c-1:
+    image: narramadan/spring-multi-module-consul-service-c
+    restart: always
+    links:
+      - consul-server
+    environment:
+      - spring.profiles.active=prod
+      - spring.cloud.consul.host=consul-server
+    networks:
+      - backend
+
+  # Service C - 2
+  service-c-2:
+    image: narramadan/spring-multi-module-consul-service-c
+    restart: always
+    links:
+      - consul-server
+    environment:
+      - spring.profiles.active=prod
+      - spring.cloud.consul.host=consul-server
+    networks: 
+      - backend
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:

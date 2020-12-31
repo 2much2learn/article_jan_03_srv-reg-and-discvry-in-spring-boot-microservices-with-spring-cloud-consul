@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: service-a
+  profiles:
+    active: "dev"
+
+server:
+  port : 8080
+
+serviceb:
+  url: http://service-b
+
+servicec:
+  url: http://service-c
+
+---
+
+spring:
+  profiles: dev
+  cloud:
+    consul:
+      host: 127.0.0.1
+
+server:
+  port : 8081
+
+---
+
+spring:
+  profiles: prod
+  cloud:
+    consul:
+      discovery:
+        instanceId: "${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}"
+        prefer-ip-address: true
+        health-check-critical-timeout: "1m"
+      
+               
