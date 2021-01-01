@@ -32,4 +32,5 @@ spec:
   ports:
     - port: 8500
       targetPort: 8500
+      nodePort: 32500
   type: NodePort
