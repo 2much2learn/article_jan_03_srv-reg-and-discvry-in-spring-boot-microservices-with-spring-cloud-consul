@@ -3,6 +3,13 @@ spring:
     name: service-a
   profiles:
     active: "dev"
+  cloud:
+    consul:
+      host: 127.0.0.1
+      discovery:        
+        instanceId: "${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}"
+        prefer-ip-address: true
+        health-check-critical-timeout: "1m"
 
 server:
   port : 8080
@@ -17,9 +24,6 @@ servicec:
 
 spring:
   profiles: dev
-  cloud:
-    consul:
-      host: 127.0.0.1
 
 server:
   port : 8081
@@ -28,11 +32,4 @@ server:
 
 spring:
   profiles: prod
-  cloud:
-    consul:
-      discovery:
-        instanceId: "${spring.application.name}-${server.port}-${spring.cloud.client.ip-address}"
-        prefer-ip-address: true
-        health-check-critical-timeout: "1m"
-      
-               
+  

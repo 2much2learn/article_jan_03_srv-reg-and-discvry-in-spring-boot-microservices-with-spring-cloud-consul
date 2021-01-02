@@ -5,8 +5,8 @@
     <groupId>com.toomuch2learn.microservices</groupId>
 	<artifactId>spring-multi-module-consul</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-multi-module-service</name>
-	<description>Spring multi module service</description>
+	<name>spring-multi-module-consul</name>
+	<description>Spring multi module consul service</description>
     <packaging>pom</packaging>
 
     <parent>

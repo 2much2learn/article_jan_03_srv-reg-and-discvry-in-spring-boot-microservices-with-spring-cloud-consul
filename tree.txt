@@ -1,37 +1,335 @@
-spring-multi-module-service
-|   build.gradle
-|   docker-compose.yml
-|   pom.xml
-+---k8s
-|       springboot-a.yaml
-|       springboot-b.yaml
-|       springboot-c.yaml
-|       
-+---service-a
-|   |   build.gradle
-|   |   pom.xml
-|   +---src
-|   |   +---main
-|   |   |   +---java
-|   |   |   |   \---com
-|   |   |   |       \---toomuch2learn
-|   |   |   |           \---microservices
-|   |   |   |               \---servicea
-|   |   |   |                   |   GreetingController.java
-|   |   |   |                   |   ServiceAApplication.java
-|   |   |   |                   |   
-|   |   |   |                   +---client
-|   |   |   |                   |       ServiceBClient.java
-|   |   |   |                   |       ServiceCClient.java
-|   |   |   |                   |       
-|   |   |   |                   +---config
-|   |   |   |                   \---model
-|   |   |   |                           Greeting.java
-|   |   |   |                           
-|   |   |   \---resources
-|   |   |           application.yaml
-|   |   |           
-|   |   \---test
-+---service-b
-+---service-c
+Folder PATH listing for volume Work
+Volume serial number is 7805-B074
+D:.
+-   .classpath
+-   .gitignore
+-   .project
+-   build.gradle
+-   docker-compose.yml
+-   gradlew
+-   gradlew.bat
+-   mvnw
+-   mvnw.cmd
+-   pom.xml
+-   Readme.md
+-   settings.gradle
+-   tree.txt
+-   
+----.gradle
+-   ----6.7
+-   -   -   gc.properties
+-   -   -   
+-   -   ----executionHistory
+-   -   -       executionHistory.bin
+-   -   -       executionHistory.lock
+-   -   -       
+-   -   ----fileChanges
+-   -   -       last-build.bin
+-   -   -       
+-   -   ----fileHashes
+-   -   -       fileHashes.bin
+-   -   -       fileHashes.lock
+-   -   -       
+-   -   ----javaCompile
+-   -           javaCompile.lock
+-   -           taskHistory.bin
+-   -           
+-   ----6.7.1
+-   -   -   gc.properties
+-   -   -   
+-   -   ----executionHistory
+-   -   -       executionHistory.lock
+-   -   -       
+-   -   ----fileChanges
+-   -   -       last-build.bin
+-   -   -       
+-   -   ----fileHashes
+-   -   -       fileHashes.lock
+-   -   -       
+-   -   ----vcsMetadata-1
+-   ----buildOutputCleanup
+-   -       buildOutputCleanup.lock
+-   -       cache.properties
+-   -       
+-   ----checksums
+-   -       checksums.lock
+-   -       
+-   ----configuration-cache
+-   -       gc.properties
+-   -       
+-   ----vcs-1
+-           gc.properties
+-           
+----.mvn
+-   ----wrapper
+-           maven-wrapper.jar
+-           maven-wrapper.properties
+-           MavenWrapperDownloader.java
+-           
+----.settings
+-       org.eclipse.buildship.core.prefs
+-       
+----gradle
+-   ----wrapper
+-           gradle-wrapper.jar
+-           gradle-wrapper.properties
+-           
+----k8s
+-       consul-server.yaml
+-       springboot-a.yaml
+-       springboot-b.yaml
+-       springboot-c.yaml
+-       
+----service-a
+-   -   .classpath
+-   -   .gitignore
+-   -   .project
+-   -   build.gradle
+-   -   gradlew
+-   -   gradlew.bat
+-   -   mvnw
+-   -   mvnw.cmd
+-   -   pom.xml
+-   -   settings.gradle
+-   -   
+-   ----.mvn
+-   -   ----wrapper
+-   -           maven-wrapper.jar
+-   -           maven-wrapper.properties
+-   -           MavenWrapperDownloader.java
+-   -           
+-   ----.settings
+-   -       org.eclipse.buildship.core.prefs
+-   -       
+-   ----bin
+-   -   ----main
+-   -       -   application.yaml
+-   -       -   
+-   -       ----com
+-   -           ----toomuch2learn
+-   -               ----microservices
+-   -                   ----servicea
+-   -                       -   GreetingController.class
+-   -                       -   ServiceAApplication.class
+-   -                       -   
+-   -                       ----client
+-   -                       -       ServiceBClient.class
+-   -                       -       ServiceCClient.class
+-   -                       -       
+-   -                       ----model
+-   -                               Greeting.class
+-   -                               
+-   ----gradle
+-   -   ----wrapper
+-   -           gradle-wrapper.jar
+-   -           gradle-wrapper.properties
+-   -           
+-   ----src
+-   -   ----main
+-   -       ----java
+-   -       -   ----com
+-   -       -       ----toomuch2learn
+-   -       -           ----microservices
+-   -       -               ----servicea
+-   -       -                   -   GreetingController.java
+-   -       -                   -   ServiceAApplication.java
+-   -       -                   -   
+-   -       -                   ----client
+-   -       -                   -       ServiceBClient.java
+-   -       -                   -       ServiceCClient.java
+-   -       -                   -       
+-   -       -                   ----model
+-   -       -                           Greeting.java
+-   -       -                           
+-   -       ----resources
+-   -               application.yaml
+-   -               
+-   ----target
+-       -   service-a-0.0.1-SNAPSHOT.jar
+-       -   service-a-0.0.1-SNAPSHOT.jar.original
+-       -   
+-       ----classes
+-       -   -   application.yaml
+-       -   -   
+-       -   ----com
+-       -       ----toomuch2learn
+-       -           ----microservices
+-       -               ----servicea
+-       -                   -   GreetingController.class
+-       -                   -   ServiceAApplication.class
+-       -                   -   
+-       -                   ----client
+-       -                   -       ServiceBClient.class
+-       -                   -       ServiceCClient.class
+-       -                   -       
+-       -                   ----model
+-       -                           Greeting.class
+-       -                           
+-       ----generated-sources
+-       -   ----annotations
+-       ----maven-archiver
+-       -       pom.properties
+-       -       
+-       ----maven-status
+-           ----maven-compiler-plugin
+-               ----compile
+-                   ----default-compile
+-                           createdFiles.lst
+-                           inputFiles.lst
+-                           
+----service-b
+-   -   .classpath
+-   -   .gitignore
+-   -   .project
+-   -   build.gradle
+-   -   gradlew
+-   -   gradlew.bat
+-   -   mvnw
+-   -   mvnw.cmd
+-   -   pom.xml
+-   -   settings.gradle
+-   -   
+-   ----.mvn
+-   -   ----wrapper
+-   -           maven-wrapper.jar
+-   -           maven-wrapper.properties
+-   -           MavenWrapperDownloader.java
+-   -           
+-   ----.settings
+-   -       org.eclipse.buildship.core.prefs
+-   -       
+-   ----bin
+-   -   ----main
+-   -       -   application.yaml
+-   -       -   
+-   -       ----com
+-   -           ----toomuch2learn
+-   -               ----microservices
+-   -                   ----serviceb
+-   -                           Greeting.class
+-   -                           GreetingController.class
+-   -                           ServiceBApplication.class
+-   -                           
+-   ----gradle
+-   -   ----wrapper
+-   -           gradle-wrapper.jar
+-   -           gradle-wrapper.properties
+-   -           
+-   ----src
+-   -   ----main
+-   -       ----java
+-   -       -   ----com
+-   -       -       ----toomuch2learn
+-   -       -           ----microservices
+-   -       -               ----serviceb
+-   -       -                       GreetingController.java
+-   -       -                       ServiceBApplication.java
+-   -       -                       
+-   -       ----resources
+-   -               application.yaml
+-   -               
+-   ----target
+-       -   service-b-0.0.1-SNAPSHOT.jar
+-       -   service-b-0.0.1-SNAPSHOT.jar.original
+-       -   
+-       ----classes
+-       -   -   application.yaml
+-       -   -   
+-       -   ----com
+-       -       ----toomuch2learn
+-       -           ----microservices
+-       -               ----serviceb
+-       -                       Greeting.class
+-       -                       GreetingController.class
+-       -                       ServiceBApplication.class
+-       -                       
+-       ----generated-sources
+-       -   ----annotations
+-       ----maven-archiver
+-       -       pom.properties
+-       -       
+-       ----maven-status
+-           ----maven-compiler-plugin
+-               ----compile
+-                   ----default-compile
+-                           createdFiles.lst
+-                           inputFiles.lst
+-                           
+----service-c
+    -   .classpath
+    -   .gitignore
+    -   .project
+    -   build.gradle
+    -   gradlew
+    -   gradlew.bat
+    -   mvnw
+    -   mvnw.cmd
+    -   pom.xml
+    -   settings.gradle
+    -   
+    ----.mvn
+    -   ----wrapper
+    -           maven-wrapper.jar
+    -           maven-wrapper.properties
+    -           MavenWrapperDownloader.java
+    -           
+    ----.settings
+    -       org.eclipse.buildship.core.prefs
+    -       
+    ----bin
+    -   ----main
+    -       -   application.yaml
+    -       -   
+    -       ----com
+    -           ----toomuch2learn
+    -               ----microservices
+    -                   ----servicec
+    -                           Greeting.class
+    -                           GreetingController.class
+    -                           ServiceCApplication.class
+    -                           
+    ----gradle
+    -   ----wrapper
+    -           gradle-wrapper.jar
+    -           gradle-wrapper.properties
+    -           
+    ----src
+    -   ----main
+    -       ----java
+    -       -   ----com
+    -       -       ----toomuch2learn
+    -       -           ----microservices
+    -       -               ----servicec
+    -       -                       GreetingController.java
+    -       -                       ServiceCApplication.java
+    -       -                       
+    -       ----resources
+    -               application.yaml
+    -               
+    ----target
+        -   service-c-0.0.1-SNAPSHOT.jar
+        -   service-c-0.0.1-SNAPSHOT.jar.original
+        -   
+        ----classes
+        -   -   application.yaml
+        -   -   
+        -   ----com
+        -       ----toomuch2learn
+        -           ----microservices
+        -               ----servicec
+        -                       Greeting.class
+        -                       GreetingController.class
+        -                       ServiceCApplication.class
+        -                       
+        ----generated-sources
+        -   ----annotations
+        ----maven-archiver
+        -       pom.properties
+        -       
+        ----maven-status
+            ----maven-compiler-plugin
+                ----compile
+                    ----default-compile
+                            createdFiles.lst
+                            inputFiles.lst
                             
